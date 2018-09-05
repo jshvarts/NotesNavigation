@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">NotesNavigation</string>
+    <string name="app_name">Notes Navigation</string>
+    <string name="label_note_list">Note List</string>
 </resources>
