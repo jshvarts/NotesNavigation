@@ -2,8 +2,11 @@
     <string name="app_name">Notes Navigation</string>
     <string name="label_note_list">Note List</string>
     <string name="label_note_detail">Note Detail</string>
+    <string name="label_add_note">Add Note</string>
     <string name="notes_not_found">No notes found</string>
     <string name="note_detail_id">id: %s</string>
     <string name="note_detail_text">text: %s</string>
     <string name="error_loading_note">Error loading note</string>
+    <string name="add_note_hint">add note</string>
+    <string name="error_validating_note">Invalid text</string>
 </resources>
