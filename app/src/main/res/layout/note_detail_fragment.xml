@@ -28,4 +28,14 @@
         app:layout_constraintTop_toBottomOf="@id/noteId"
         tools:text="Note text" />
 
+    <Button
+        android:id="@+id/editNoteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_note_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

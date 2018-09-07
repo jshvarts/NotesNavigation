@@ -15,6 +15,10 @@
             android:id="@+id/action_notes_to_addNote"
             app:destination="@id/addNoteFragment" />
 
+        <action
+            android:id="@+id/action_notes_to_noteDetail"
+            app:destination="@id/noteDetailFragment" />
+
     </fragment>
 
     <fragment
@@ -28,6 +32,10 @@
             android:defaultValue="0"
             app:argType="integer" />
 
+        <action
+            android:id="@+id/action_noteDetail_to_editNote"
+            app:destination="@id/editNoteFragment" />
+
     </fragment>
 
     <fragment
@@ -35,5 +43,17 @@
         android:name="com.jshvarts.notesnavigation.presentation.addnote.AddNoteFragment"
         android:label="@string/label_add_note"
         tools:layout="@layout/add_note_fragment" />
+
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="com.jshvarts.notesnavigation.presentation.editnote.EditNoteFragment"
+        android:label="@string/label_edit_note"
+        tools:layout="@layout/edit_note_fragment">
+
+        <argument
+            android:name="noteId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
