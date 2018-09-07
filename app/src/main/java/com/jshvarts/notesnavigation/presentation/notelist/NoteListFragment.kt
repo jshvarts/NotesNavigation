@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
-import kotlinx.android.synthetic.main.note_item.*
 import kotlinx.android.synthetic.main.note_list_fragment.*
 
 
@@ -61,7 +60,7 @@ class NoteListFragment : Fragment() {
 
     private fun onNoteClicked(note: Note) {
         view?.let {
-            Snackbar.make(it, "note $noteId clicked", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(it, "note ${note.id} clicked", Snackbar.LENGTH_LONG).show()
         }
     }
 

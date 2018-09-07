@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs'
 
 ext {
     supportLibraryVersion = "27.1.1"
