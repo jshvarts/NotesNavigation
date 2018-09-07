@@ -9,7 +9,13 @@
         android:id="@+id/notesFragment"
         android:name="com.jshvarts.notesnavigation.presentation.notelist.NoteListFragment"
         android:label="@string/label_note_list"
-        tools:layout="@layout/note_list_fragment" />
+        tools:layout="@layout/note_list_fragment">
+
+        <action
+            android:id="@+id/action_notes_to_addNote"
+            app:destination="@id/addNoteFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/noteDetailFragment"
@@ -23,5 +29,11 @@
             app:argType="integer" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.jshvarts.notesnavigation.presentation.addnote.AddNoteFragment"
+        android:label="@string/label_add_note"
+        tools:layout="@layout/add_note_fragment" />
 
 </navigation>

@@ -9,8 +9,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
+import com.jshvarts.notesnavigation.presentation.notelist.NoteListFragmentDirections.actionNotesToAddNote
 import kotlinx.android.synthetic.main.note_list_fragment.*
 
 
@@ -38,7 +40,7 @@ class NoteListFragment : Fragment() {
         })
 
         fab.setOnClickListener {
-            Snackbar.make(it, "fab clicked", Snackbar.LENGTH_LONG).show()
+            it.findNavController().navigate(actionNotesToAddNote())
         }
     }
 
