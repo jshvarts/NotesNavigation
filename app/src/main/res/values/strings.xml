@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Notes Navigation</string>
     <string name="label_note_list">Note List</string>
+    <string name="notes_not_found">No notes found</string>
 </resources>
