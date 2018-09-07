@@ -3,7 +3,6 @@ package com.jshvarts.notesnavigation.presentation.notelist
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -13,6 +12,7 @@ import androidx.navigation.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.notelist.NoteListFragmentDirections.actionNotesToAddNote
+import com.jshvarts.notesnavigation.presentation.notelist.NoteListFragmentDirections.actionNotesToNoteDetail
 import kotlinx.android.synthetic.main.note_list_fragment.*
 
 
@@ -62,7 +62,8 @@ class NoteListFragment : Fragment() {
 
     private fun onNoteClicked(note: Note) {
         view?.let {
-            Snackbar.make(it, "note ${note.id} clicked", Snackbar.LENGTH_LONG).show()
+            val navDirections = actionNotesToNoteDetail().setNoteId(note.id)
+            it.findNavController().navigate(navDirections)
         }
     }
 

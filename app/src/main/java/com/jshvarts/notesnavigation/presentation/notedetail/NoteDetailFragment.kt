@@ -8,9 +8,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentArgs.fromBundle
+import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentDirections.actionNoteDetailToEditNote
 import kotlinx.android.synthetic.main.note_detail_fragment.*
 
 class NoteDetailFragment : Fragment() {
@@ -29,6 +31,12 @@ class NoteDetailFragment : Fragment() {
         viewModel.observableNote.observe(this, Observer { note ->
             note?.let { render(note) } ?: renderNoteNotFound()
         })
+
+        val args = fromBundle(arguments)
+        editNoteButton.setOnClickListener {
+            val navDirections = actionNoteDetailToEditNote().setNoteId(args.noteId)
+            it.findNavController().navigate(navDirections)
+        }
     }
 
     override fun onResume() {
