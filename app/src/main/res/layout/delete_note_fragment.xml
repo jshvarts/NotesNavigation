@@ -29,22 +29,22 @@
         tools:text="Note text" />
 
     <Button
-        android:id="@+id/editNoteButton"
+        android:id="@+id/cancelDeleteButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/edit_note_button_text"
+        android:text="@string/cancel_delete_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/deleteNoteButton"
+        app:layout_constraintEnd_toStartOf="@+id/confirmDeleteButton"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/deleteNoteButton"
+        android:id="@+id/confirmDeleteButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/delete_note_button_text"
+        android:text="@string/confirm_delete_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editNoteButton" />
+        app:layout_constraintStart_toEndOf="@+id/cancelDeleteButton" />
 
 </android.support.constraint.ConstraintLayout>

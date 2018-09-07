@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentArgs.fromBundle
+import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentDirections.actionNoteDetailToDeleteNote
 import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentDirections.actionNoteDetailToEditNote
 import kotlinx.android.synthetic.main.note_detail_fragment.*
 
@@ -35,6 +36,11 @@ class NoteDetailFragment : Fragment() {
         val args = fromBundle(arguments)
         editNoteButton.setOnClickListener {
             val navDirections = actionNoteDetailToEditNote().setNoteId(args.noteId)
+            it.findNavController().navigate(navDirections)
+        }
+
+        deleteNoteButton.setOnClickListener {
+            val navDirections = actionNoteDetailToDeleteNote().setNoteId(args.noteId)
             it.findNavController().navigate(navDirections)
         }
     }

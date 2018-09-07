@@ -36,6 +36,10 @@
             android:id="@+id/action_noteDetail_to_editNote"
             app:destination="@id/editNoteFragment" />
 
+        <action
+            android:id="@+id/action_noteDetail_to_deleteNote"
+            app:destination="@id/deleteNoteFragment" />
+
     </fragment>
 
     <fragment
@@ -49,6 +53,18 @@
         android:name="com.jshvarts.notesnavigation.presentation.editnote.EditNoteFragment"
         android:label="@string/label_edit_note"
         tools:layout="@layout/edit_note_fragment">
+
+        <argument
+            android:name="noteId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/deleteNoteFragment"
+        android:name="com.jshvarts.notesnavigation.presentation.deletenote.DeleteNoteFragment"
+        android:label="@string/label_delete_note"
+        tools:layout="@layout/delete_note_fragment">
 
         <argument
             android:name="noteId"
