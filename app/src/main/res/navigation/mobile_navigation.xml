@@ -39,6 +39,10 @@
             android:id="@+id/action_noteDetail_to_deleteNote"
             app:destination="@id/deleteNoteFragment" />
 
+        <deepLink
+            android:id="@+id/noteDetailDeepLink"
+            app:uri="notesapp://notes/{noteId}" />
+
     </fragment>
 
     <fragment
