@@ -15,6 +15,9 @@ This repo contains a comprehensive sample of using the [Navigation Architecture 
 ## Design Pattern
 MVVM (Model-View-ViewModel) is used to make the architecture cleaner, more readable and maintainable. Notes are stored and managed in memory within the domain layer (this sample is about Navigation and not full-blown [Clean Architecture](https://github.com/jshvarts/ConductorMVP) after all).   
 
+## Bonus
+[This PR](https://github.com/jshvarts/NotesNavigation/commit/0744acff8d33708b72c852b71a8831a395ab22e2) contains steps needed to migrate from support library to AndroidX namespace. For more details, see [AndroidX Refactoring docs](https://developer.android.com/topic/libraries/support-library/refactor)
+
 ## Screenshots
 
 ![List of notes](docs/note-list.png?raw=true)
