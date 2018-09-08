@@ -1,6 +1,6 @@
 package com.jshvarts.notesnavigation.presentation.notelist
 
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
 import com.jshvarts.notesnavigation.domain.Note
 
 class NoteDiffCallback(private val old: List<Note>,

@@ -1,15 +1,14 @@
 package com.jshvarts.notesnavigation.presentation.deletenote
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.deletenote.DeleteNoteFragmentArgs.fromBundle
@@ -53,7 +52,11 @@ class DeleteNoteFragment : Fragment() {
 
     private fun render(deleteStatus: Boolean) {
         when (deleteStatus) {
-            true -> findNavController().popBackStack(R.id.notesFragment, false)
+            true -> {
+                view?.let { v ->
+                    v.findNavController().popBackStack(R.id.notesFragment, false)
+                }
+            }
             false -> Snackbar.make(confirmDeleteButton, R.string.error_deleting_note, Snackbar.LENGTH_LONG).show()
         }
     }
