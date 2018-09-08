@@ -1,15 +1,14 @@
 package com.jshvarts.notesnavigation.presentation.notelist
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.notelist.NoteListFragmentDirections.actionNotesToAddNote
@@ -63,7 +62,9 @@ class NoteListFragment : Fragment() {
 
     private fun onNoteClicked(note: Note) {
         val navDirections = actionNotesToNoteDetail(note.id)
-        findNavController().navigate(navDirections)
+        view?.let { v ->
+            v.findNavController().navigate(navDirections)
+        }
     }
 
     private fun setupRecyclerView() {

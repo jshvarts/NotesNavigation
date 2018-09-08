@@ -1,14 +1,14 @@
 package com.jshvarts.notesnavigation.presentation.editnote
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.closeSoftKeyboard
@@ -46,7 +46,11 @@ class EditNoteFragment : Fragment() {
 
     private fun render(editStatus: Boolean) {
         when (editStatus) {
-            true -> findNavController().navigateUp()
+            true -> {
+                view?.let { v ->
+                    v.findNavController().navigateUp()
+                }
+            }
             false -> editNoteText.error = getString(R.string.error_validating_note)
         }
     }
