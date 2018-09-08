@@ -5,6 +5,7 @@
     <string name="label_add_note">Add Note</string>
     <string name="label_edit_note">Edit Note</string>
     <string name="label_delete_note">Confirm Delete Note</string>
+    <string name="label_search_notes">Search Notes</string>
     <string name="notes_not_found">No notes found</string>
     <string name="note_detail_id">id: %s</string>
     <string name="note_detail_text">text: %s</string>

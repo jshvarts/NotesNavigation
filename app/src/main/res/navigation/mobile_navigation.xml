@@ -69,4 +69,10 @@
             app:argType="integer" />
     </fragment>
 
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.jshvarts.notesnavigation.presentation.search.SearchFragment"
+        android:label="@string/label_search_notes"
+        tools:layout="@layout/search_fragment" />
+
 </navigation>

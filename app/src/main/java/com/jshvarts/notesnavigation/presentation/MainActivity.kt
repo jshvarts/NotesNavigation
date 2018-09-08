@@ -24,15 +24,15 @@ class MainActivity : AppCompatActivity() {
         // Update action bar to reflect navigation
         setupActionBarWithNavController(this, navController, drawerLayout)
 
-        // Enable navigation via nav drawer
-        setupWithNavController(navigationView, navController)
-
-        // Visually reflect selected nav drawer item
+        // Handle nav drawer item clicks
         navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             drawerLayout.closeDrawers()
             true
         }
+
+        // Tie nav graph to items in nav drawer
+        setupWithNavController(navigationView, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
