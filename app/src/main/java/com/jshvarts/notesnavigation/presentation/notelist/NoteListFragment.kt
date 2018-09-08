@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.notelist.NoteListFragmentDirections.actionNotesToAddNote
@@ -39,8 +40,8 @@ class NoteListFragment : Fragment() {
             notes?.let { render(notes) }
         })
 
-        fab.setOnClickListener {
-            it.findNavController().navigate(actionNotesToAddNote())
+        fab.setOnClickListener { v ->
+            v.findNavController().navigate(actionNotesToAddNote())
         }
     }
 
@@ -61,10 +62,8 @@ class NoteListFragment : Fragment() {
     }
 
     private fun onNoteClicked(note: Note) {
-        view?.let {
-            val navDirections = actionNotesToNoteDetail(note.id)
-            it.findNavController().navigate(navDirections)
-        }
+        val navDirections = actionNotesToNoteDetail(note.id)
+        findNavController().navigate(navDirections)
     }
 
     private fun setupRecyclerView() {
