@@ -35,12 +35,12 @@ class NoteDetailFragment : Fragment() {
 
         val args = fromBundle(arguments)
         editNoteButton.setOnClickListener {
-            val navDirections = actionNoteDetailToEditNote().setNoteId(args.noteId)
+            val navDirections = actionNoteDetailToEditNote(args.noteId)
             it.findNavController().navigate(navDirections)
         }
 
         deleteNoteButton.setOnClickListener {
-            val navDirections = actionNoteDetailToDeleteNote().setNoteId(args.noteId)
+            val navDirections = actionNoteDetailToDeleteNote(args.noteId)
             it.findNavController().navigate(navDirections)
         }
     }

@@ -62,7 +62,7 @@ class NoteListFragment : Fragment() {
 
     private fun onNoteClicked(note: Note) {
         view?.let {
-            val navDirections = actionNotesToNoteDetail().setNoteId(note.id)
+            val navDirections = actionNotesToNoteDetail(note.id)
             it.findNavController().navigate(navDirections)
         }
     }
