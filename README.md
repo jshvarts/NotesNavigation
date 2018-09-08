@@ -1,8 +1,8 @@
 # Android Navigation Architecture Component Demo
 
-This repo contains a comprehensive sample of using the [Navigation Architecture Component](https://developer.android.com/topic/libraries/architecture/navigation/) using a simple Notes app.
+This repo contains a comprehensive sample of using the [Navigation Architecture Component](https://developer.android.com/topic/libraries/architecture/navigation/) by way of a simple Notes app--no domain knowledge needed to understand the purpose of this app.
 
-## Functionality included:
+## Functionality included
 1) List notes
 2) View single note
 3) Edit a note
@@ -12,7 +12,7 @@ This repo contains a comprehensive sample of using the [Navigation Architecture 
 7) Connecting `Nav Drawer` with your navigation graph.
 8) Configuring type-safe arguments between navigation components (in this case, Fragments)
 
-## Design Pattens
+## Design Pattern
 MVVM (Model-View-ViewModel) is used to make the architecture cleaner, more readable and maintainable. Notes are stored and managed in memory within the domain layer (this sample is about Navigation and not full-blown [Clean Architecture](https://github.com/jshvarts/ConductorMVP) after all).   
 
 ## Screenshots
