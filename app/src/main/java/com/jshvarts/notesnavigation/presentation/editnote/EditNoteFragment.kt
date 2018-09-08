@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.closeSoftKeyboard
@@ -45,13 +45,9 @@ class EditNoteFragment : Fragment() {
     }
 
     private fun render(editStatus: Boolean) {
-        if (editStatus) {
-            // successfully edited a note--Return to previous screen
-            view?.let {
-                it.findNavController().navigateUp()
-            }
-        } else {
-            editNoteText.error = getString(R.string.error_validating_note)
+        when (editStatus) {
+            true -> findNavController().navigateUp()
+            false -> editNoteText.error = getString(R.string.error_validating_note)
         }
     }
 

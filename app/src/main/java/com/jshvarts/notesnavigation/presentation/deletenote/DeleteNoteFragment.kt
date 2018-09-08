@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.deletenote.DeleteNoteFragmentArgs.fromBundle
@@ -36,8 +37,8 @@ class DeleteNoteFragment : Fragment() {
         val args = fromBundle(arguments)
         viewModel.initNote(args.noteId)
 
-        cancelDeleteButton.setOnClickListener {
-            it.findNavController().navigateUp()
+        cancelDeleteButton.setOnClickListener { v ->
+            v.findNavController().navigateUp()
         }
 
         confirmDeleteButton.setOnClickListener {
@@ -52,8 +53,8 @@ class DeleteNoteFragment : Fragment() {
 
     private fun render(deleteStatus: Boolean) {
         when (deleteStatus) {
-            true -> view?.findNavController()?.popBackStack(R.id.notesFragment, false)
-            else -> Snackbar.make(confirmDeleteButton, R.string.error_deleting_note, Snackbar.LENGTH_LONG).show()
+            true -> findNavController().popBackStack(R.id.notesFragment, false)
+            false -> Snackbar.make(confirmDeleteButton, R.string.error_deleting_note, Snackbar.LENGTH_LONG).show()
         }
     }
 }

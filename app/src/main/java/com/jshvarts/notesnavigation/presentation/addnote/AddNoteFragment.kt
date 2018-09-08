@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.presentation.closeSoftKeyboard
 import kotlinx.android.synthetic.main.add_note_fragment.*
@@ -41,13 +41,9 @@ class AddNoteFragment : Fragment() {
     }
 
     private fun render(status: Boolean) {
-        if (status) {
-            // successfully added a note--Return to previous screen
-            view?.let {
-                it.findNavController().navigateUp()
-            }
-        } else {
-            addNoteText.error = getString(R.string.error_validating_note)
+        when (status) {
+            true -> findNavController().navigateUp()
+            false -> addNoteText.error = getString(R.string.error_validating_note)
         }
     }
 }
