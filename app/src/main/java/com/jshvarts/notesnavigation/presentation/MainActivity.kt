@@ -18,6 +18,18 @@ class MainActivity : AppCompatActivity() {
         setupNavigation()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navigateUp(drawerLayout, findNavController(this, R.id.nav_host_fragment))
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     private fun setupNavigation() {
         val navController = findNavController(this, R.id.nav_host_fragment)
 
@@ -33,17 +45,5 @@ class MainActivity : AppCompatActivity() {
 
         // Tie nav graph to items in nav drawer
         setupWithNavController(navigationView, navController)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navigateUp(drawerLayout, findNavController(this, R.id.nav_host_fragment))
-    }
-
-    override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
     }
 }
