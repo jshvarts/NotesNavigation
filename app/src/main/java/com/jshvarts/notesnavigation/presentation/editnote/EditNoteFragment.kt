@@ -48,7 +48,7 @@ class EditNoteFragment : Fragment() {
         when (editStatus) {
             true -> {
                 view?.let { v ->
-                    v.findNavController().navigateUp()
+                    v.findNavController().popBackStack()
                 }
             }
             false -> editNoteText.error = getString(R.string.error_validating_note)

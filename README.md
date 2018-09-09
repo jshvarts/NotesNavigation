@@ -1,6 +1,8 @@
 # Android Navigation Architecture Component Demo
 
-This repo contains a comprehensive sample of using the [Navigation Architecture Component](https://developer.android.com/topic/libraries/architecture/navigation/) by way of a simple Notes app--no domain knowledge needed to understand the purpose of this app.
+My article covering this repo: [Navigation Architecture Component for the Rest of Us](https://proandroiddev.com/navigation-architecture-component-for-the-rest-of-us-faafa890e5)
+
+This project contains a comprehensive sample of using the [Navigation Architecture Component](https://developer.android.com/topic/libraries/architecture/navigation/) by way of a simple Notes app--no domain knowledge needed to understand the purpose of this app.
 
 ## Functionality included
 1) List notes

@@ -37,7 +37,7 @@ class DeleteNoteFragment : Fragment() {
         viewModel.initNote(args.noteId)
 
         cancelDeleteButton.setOnClickListener { v ->
-            v.findNavController().navigateUp()
+            v.findNavController().popBackStack()
         }
 
         confirmDeleteButton.setOnClickListener {
