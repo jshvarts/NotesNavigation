@@ -44,7 +44,7 @@ class AddNoteFragment : Fragment() {
         when (status) {
             true -> {
                 view?.let { v ->
-                    v.findNavController().navigateUp()
+                    v.findNavController().popBackStack()
                 }
             }
             false -> addNoteText.error = getString(R.string.error_validating_note)
