@@ -8,7 +8,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
 import com.jshvarts.notesnavigation.presentation.closeSoftKeyboard
@@ -47,8 +47,8 @@ class EditNoteFragment : Fragment() {
     private fun render(editStatus: Boolean) {
         when (editStatus) {
             true -> {
-                view?.let { v ->
-                    v.findNavController().popBackStack()
+                view?.let {
+                    findNavController(it).popBackStack()
                 }
             }
             false -> editNoteText.error = getString(R.string.error_validating_note)

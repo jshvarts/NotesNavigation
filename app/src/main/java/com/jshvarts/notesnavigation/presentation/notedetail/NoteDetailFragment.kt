@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
@@ -34,14 +34,14 @@ class NoteDetailFragment : Fragment() {
         })
 
         val args = fromBundle(arguments)
-        editNoteButton.setOnClickListener { v ->
+        editNoteButton.setOnClickListener {
             val navDirections = actionNoteDetailToEditNote(args.noteId)
-            v.findNavController().navigate(navDirections)
+            findNavController(it).navigate(navDirections)
         }
 
-        deleteNoteButton.setOnClickListener { v ->
+        deleteNoteButton.setOnClickListener {
             val navDirections = actionNoteDetailToDeleteNote(args.noteId)
-            v.findNavController().navigate(navDirections)
+            findNavController(it).navigate(navDirections)
         }
     }
 
