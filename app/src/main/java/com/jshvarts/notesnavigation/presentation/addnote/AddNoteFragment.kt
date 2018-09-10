@@ -8,7 +8,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation.findNavController
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.presentation.closeSoftKeyboard
 import kotlinx.android.synthetic.main.add_note_fragment.*
@@ -43,8 +43,8 @@ class AddNoteFragment : Fragment() {
     private fun render(status: Boolean) {
         when (status) {
             true -> {
-                view?.let { v ->
-                    v.findNavController().popBackStack()
+                view?.let {
+                    findNavController(it).popBackStack()
                 }
             }
             false -> addNoteText.error = getString(R.string.error_validating_note)

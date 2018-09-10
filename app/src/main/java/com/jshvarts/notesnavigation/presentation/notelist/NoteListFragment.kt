@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
@@ -39,8 +39,8 @@ class NoteListFragment : Fragment() {
             notes?.let { render(notes) }
         })
 
-        fab.setOnClickListener { v ->
-            v.findNavController().navigate(actionNotesToAddNote())
+        fab.setOnClickListener {
+            findNavController(it).navigate(actionNotesToAddNote())
         }
     }
 
@@ -62,8 +62,8 @@ class NoteListFragment : Fragment() {
 
     private fun onNoteClicked(note: Note) {
         val navDirections = actionNotesToNoteDetail(note.id)
-        view?.let { v ->
-            v.findNavController().navigate(navDirections)
+        view?.let {
+            findNavController(it).navigate(navDirections)
         }
     }
 
