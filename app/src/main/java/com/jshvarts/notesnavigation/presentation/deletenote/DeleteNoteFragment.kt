@@ -11,12 +11,16 @@ import androidx.navigation.Navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
-import com.jshvarts.notesnavigation.presentation.deletenote.DeleteNoteFragmentArgs.fromBundle
+import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentArgs
 import kotlinx.android.synthetic.main.delete_note_fragment.*
 
 class DeleteNoteFragment : Fragment() {
 
     private lateinit var viewModel: DeleteNoteViewModel
+
+    private val noteId by lazy {
+        NoteDetailFragmentArgs.fromBundle(arguments).noteId
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -33,20 +37,19 @@ class DeleteNoteFragment : Fragment() {
             deleteStatus?.let { render(deleteStatus) }
         })
 
-        val args = fromBundle(arguments)
-        viewModel.initNote(args.noteId)
+        viewModel.initNote(noteId)
 
         cancelDeleteButton.setOnClickListener {
             findNavController(it).popBackStack()
         }
 
         confirmDeleteButton.setOnClickListener {
-            viewModel.deleteNote(args.noteId)
+            viewModel.deleteNote(noteId)
         }
     }
 
     private fun initCurrentNote(note: Note) {
-        noteId.text = String.format(getString(R.string.note_detail_id), note.id)
+        noteIdView.text = String.format(getString(R.string.note_detail_id), note.id)
         noteText.text = String.format(getString(R.string.note_detail_text), note.text)
     }
 

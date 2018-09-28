@@ -19,6 +19,10 @@ class EditNoteFragment : Fragment() {
 
     private lateinit var viewModel: EditNoteViewModel
 
+    private val noteId by lazy {
+        fromBundle(arguments).noteId
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.edit_note_fragment, container, false)
@@ -34,8 +38,7 @@ class EditNoteFragment : Fragment() {
             editStatus?.let { render(editStatus) }
         })
 
-        val args = fromBundle(arguments)
-        viewModel.initNote(args.noteId)
+        viewModel.initNote(noteId)
 
         setupEditNoteSubmitHandling()
     }
@@ -59,7 +62,7 @@ class EditNoteFragment : Fragment() {
         editNoteText.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val args = fromBundle(arguments)
-                viewModel.editNote(args.noteId, v.text.toString())
+                viewModel.editNote(noteId, v.text.toString())
                 v.closeSoftKeyboard()
                 true
             } else {

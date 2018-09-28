@@ -20,6 +20,10 @@ class NoteDetailFragment : Fragment() {
 
     private lateinit var viewModel: NoteDetailViewModel
 
+    private val noteId by lazy {
+        fromBundle(arguments).noteId
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.note_detail_fragment, container, false)
@@ -33,30 +37,29 @@ class NoteDetailFragment : Fragment() {
             note?.let { render(note) } ?: renderNoteNotFound()
         })
 
-        val args = fromBundle(arguments)
         editNoteButton.setOnClickListener {
-            val navDirections = actionNoteDetailToEditNote(args.noteId)
+            val navDirections = actionNoteDetailToEditNote(noteId)
             findNavController(it).navigate(navDirections)
         }
 
         deleteNoteButton.setOnClickListener {
-            val navDirections = actionNoteDetailToDeleteNote(args.noteId)
+            val navDirections = actionNoteDetailToDeleteNote(noteId)
             findNavController(it).navigate(navDirections)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.getNote(fromBundle(arguments).noteId)
+        viewModel.getNote(noteId)
     }
 
     private fun render(note: Note) {
-        noteId.text = String.format(getString(R.string.note_detail_id), note.id)
+        noteIdView.text = String.format(getString(R.string.note_detail_id), note.id)
         noteText.text = String.format(getString(R.string.note_detail_text), note.text)
     }
 
     private fun renderNoteNotFound() {
-        noteId.visibility = View.GONE
+        noteIdView.visibility = View.GONE
         noteText.visibility = View.GONE
         view?.let {
             Snackbar.make(it, R.string.error_loading_note, Snackbar.LENGTH_LONG).show()

@@ -48,7 +48,6 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
     // ViewModel and LiveData
-    implementation "android.arch.lifecycle:runtime:$archLifecycleVersion"
     implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
 
     // Navigation
