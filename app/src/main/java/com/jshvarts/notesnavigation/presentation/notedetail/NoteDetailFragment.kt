@@ -21,7 +21,7 @@ class NoteDetailFragment : Fragment() {
     private lateinit var viewModel: NoteDetailViewModel
 
     private val noteId by lazy {
-        fromBundle(arguments).noteId
+        arguments?.let { fromBundle(it).noteId } ?: throw IllegalArgumentException("Expected arguments")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

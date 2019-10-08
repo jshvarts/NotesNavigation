@@ -3,14 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs'
 
-ext {
-    appCompatVersion = "1.1.0-alpha01"
-    constraintLayoutVersion = "1.1.3"
-    archLifecycleVersion = "1.1.1"
-    timberVersion = "4.7.1"
-    navigationVersion = "1.0.0-alpha09"
-}
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -43,17 +35,17 @@ androidExtensions {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "androidx.recyclerview:recyclerview:$appCompatVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     // ViewModel and LiveData
-    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
 
     // Navigation
-    implementation "android.arch.navigation:navigation-fragment-ktx:$navigationVersion"
-    implementation "android.arch.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
+    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
 
     // Timber
-    implementation "com.jakewharton.timber:timber:$timberVersion"
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
