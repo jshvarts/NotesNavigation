@@ -20,7 +20,7 @@ class EditNoteFragment : Fragment() {
     private lateinit var viewModel: EditNoteViewModel
 
     private val noteId by lazy {
-        fromBundle(arguments).noteId
+        arguments?.let { fromBundle(it).noteId } ?: throw IllegalArgumentException("Expected arguments")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -61,7 +61,6 @@ class EditNoteFragment : Fragment() {
     private fun setupEditNoteSubmitHandling() {
         editNoteText.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val args = fromBundle(arguments)
                 viewModel.editNote(noteId, v.text.toString())
                 v.closeSoftKeyboard()
                 true

@@ -11,7 +11,7 @@ import androidx.navigation.Navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
-import com.jshvarts.notesnavigation.presentation.deletenote.DeleteNoteFragmentArgs.fromBundle
+import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentArgs
 import kotlinx.android.synthetic.main.delete_note_fragment.*
 
 class DeleteNoteFragment : Fragment() {
@@ -19,7 +19,7 @@ class DeleteNoteFragment : Fragment() {
     private lateinit var viewModel: DeleteNoteViewModel
 
     private val noteId by lazy {
-        fromBundle(arguments).noteId
+        arguments?.let { NoteDetailFragmentArgs.fromBundle(it).noteId } ?: throw IllegalArgumentException("Expected arguments")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
