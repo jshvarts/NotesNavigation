@@ -43,8 +43,8 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.1'
 
     // Navigation
-    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
-    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
 
     // Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
