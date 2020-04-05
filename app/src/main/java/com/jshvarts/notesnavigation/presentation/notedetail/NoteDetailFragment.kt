@@ -8,21 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
-import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentArgs.fromBundle
-import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentDirections.actionNoteDetailToDeleteNote
-import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentDirections.actionNoteDetailToEditNote
 import kotlinx.android.synthetic.main.note_detail_fragment.*
 
 class NoteDetailFragment : Fragment() {
 
     private lateinit var viewModel: NoteDetailViewModel
 
-    private val noteId by lazy {
-        arguments?.let { fromBundle(it).noteId } ?: throw IllegalArgumentException("Expected arguments")
-    }
+    private val args by navArgs<NoteDetailFragmentArgs>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -33,24 +29,24 @@ class NoteDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(NoteDetailViewModel::class.java)
-        viewModel.observableNote.observe(this, Observer { note ->
+        viewModel.observableNote.observe(viewLifecycleOwner, Observer { note ->
             note?.let { render(note) } ?: renderNoteNotFound()
         })
 
         editNoteButton.setOnClickListener {
-            val navDirections = actionNoteDetailToEditNote(noteId)
-            findNavController(it).navigate(navDirections)
+            val action = NoteDetailFragmentDirections.actionNoteDetailToEditNote(args.noteId)
+            findNavController(it).navigate(action)
         }
 
         deleteNoteButton.setOnClickListener {
-            val navDirections = actionNoteDetailToDeleteNote(noteId)
-            findNavController(it).navigate(navDirections)
+            val action = NoteDetailFragmentDirections.actionNoteDetailToDeleteNote(args.noteId)
+            findNavController(it).navigate(action)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.getNote(noteId)
+        viewModel.getNote(args.noteId)
     }
 
     private fun render(note: Note) {

@@ -8,11 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
-import com.jshvarts.notesnavigation.presentation.notelist.NoteListFragmentDirections.actionNotesToAddNote
-import com.jshvarts.notesnavigation.presentation.notelist.NoteListFragmentDirections.actionNotesToNoteDetail
 import kotlinx.android.synthetic.main.note_list_fragment.*
 
 
@@ -35,12 +34,13 @@ class NoteListFragment : Fragment() {
         setupRecyclerView()
 
         viewModel = ViewModelProviders.of(this).get(NoteListViewModel::class.java)
-        viewModel.observableNoteList.observe(this, Observer { notes ->
+        viewModel.observableNoteList.observe(viewLifecycleOwner, Observer { notes ->
             notes?.let { render(notes) }
         })
 
         fab.setOnClickListener {
-            findNavController(it).navigate(actionNotesToAddNote())
+            val action = NoteListFragmentDirections.actionNotesToAddNote()
+            findNavController(it).navigate(action)
         }
     }
 
@@ -61,10 +61,8 @@ class NoteListFragment : Fragment() {
     }
 
     private fun onNoteClicked(note: Note) {
-        val navDirections = actionNotesToNoteDetail(note.id)
-        view?.let {
-            findNavController(it).navigate(navDirections)
-        }
+        val action = NoteListFragmentDirections.actionNotesToNoteDetail(note.id)
+        findNavController().navigate(action)
     }
 
     private fun setupRecyclerView() {

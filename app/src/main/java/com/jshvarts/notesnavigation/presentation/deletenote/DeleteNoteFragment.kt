@@ -8,19 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.jshvarts.notesnavigation.R
 import com.jshvarts.notesnavigation.domain.Note
-import com.jshvarts.notesnavigation.presentation.notedetail.NoteDetailFragmentArgs
 import kotlinx.android.synthetic.main.delete_note_fragment.*
 
 class DeleteNoteFragment : Fragment() {
 
     private lateinit var viewModel: DeleteNoteViewModel
 
-    private val noteId by lazy {
-        arguments?.let { NoteDetailFragmentArgs.fromBundle(it).noteId } ?: throw IllegalArgumentException("Expected arguments")
-    }
+    private val args by navArgs<DeleteNoteFragmentArgs>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -30,21 +28,21 @@ class DeleteNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(DeleteNoteViewModel::class.java)
-        viewModel.observableCurrentNote.observe(this, Observer { currentNote ->
+        viewModel.observableCurrentNote.observe(viewLifecycleOwner, Observer { currentNote ->
             currentNote?.let { initCurrentNote(currentNote) }
         })
-        viewModel.observableDeleteStatus.observe(this, Observer { deleteStatus ->
+        viewModel.observableDeleteStatus.observe(viewLifecycleOwner, Observer { deleteStatus ->
             deleteStatus?.let { render(deleteStatus) }
         })
 
-        viewModel.initNote(noteId)
+        viewModel.initNote(args.noteId)
 
         cancelDeleteButton.setOnClickListener {
             findNavController(it).popBackStack()
         }
 
         confirmDeleteButton.setOnClickListener {
-            viewModel.deleteNote(noteId)
+            viewModel.deleteNote(args.noteId)
         }
     }
 
